@@ -1,2 +1,5 @@
-<!DOCTYPE RCC>
-<RCC version="1.0"/>
+<RCC>
+    <qresource prefix="/gui_sklad">
+        <file>gui/titan_sklad_2.mht</file>
+    </qresource>
+</RCC>

@@ -15,7 +15,27 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->btn_ClearAll->setEnabled(false);
     csvModel = new QStandardItemModel(this);
 
+    ui->label->setText(QUrl("qrc:/gui_sklad/gui/titan_sklad_2.mht").toEncoded());
 
+    QFile file("qrc:/gui_sklad/gui/titan_sklad_2.mht");
+    file.open(QFile::ReadWrite | QFile::Text);
+    QTextStream str(&file);
+    QString fullFile = nullptr;
+    QList<QString> list;
+    while (!str.atEnd()) {
+        fullFile.append(str.readLine());
+    }
+
+    QFile newFile("newtext.txt");
+    newFile.open(QFile::ReadWrite | QFile::Text);
+    QTextStream outFile(&newFile);
+    while (!str.atEnd()) {
+        outFile << fullFile;
+    }
+    newFile.close();
+
+    ui->label->setText("");
+    ui->label->show();
 
 }
 
